@@ -1,7 +1,8 @@
 .env
 venv/
-explore.py
-testingest.py
+connectiontest.py
+fetchtest.py
 cache/
 __pycache__/
 *.pyc
+oldingest.py
