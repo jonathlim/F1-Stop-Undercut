@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: f1stop_raw
+    catalog: f1stop
+    schema: raw
+    tables:
+      - name: raw_race_results
