@@ -23,7 +23,7 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "dbt_packages"
 
 
-flag:
+flags:
   use_managed_iceberg: true
   use_concurrant_microbatch: true
   use_materialization_v2: true
