@@ -63,7 +63,7 @@ renamed_cast AS (
         session_type                        AS session_type,	
         
         -- Metadata
-        loaded_at
+        CAST(loaded_at AS TIMESTAMP)        AS loaded_at
     FROM source
 )
 
