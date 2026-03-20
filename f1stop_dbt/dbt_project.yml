@@ -23,8 +23,10 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "dbt_packages"
 
 
-# Configuring models
-# Full documentation: https://docs.getdbt.com/docs/configuring-models
+flag:
+  use_managed_iceberg: true
+  use_concurrant_microbatch: true
+  use_materialization_v2: true
 
 # In this example config, we tell dbt to build all models in the example/
 # directory as views. These settings can be overridden in the individual model
