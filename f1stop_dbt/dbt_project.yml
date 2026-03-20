@@ -25,7 +25,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 flags:
   use_managed_iceberg: true
-  use_concurrant_microbatch: true
+  use_concurrent_microbatch: true
   use_materialization_v2: true
 
 # In this example config, we tell dbt to build all models in the example/
