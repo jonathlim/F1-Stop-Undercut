@@ -33,9 +33,9 @@ renamed_cast AS (
         Team                                AS team,
 
         -- Lap info
-        CAST(LapNumber AS INT)              AS lap_number,
-        CAST(Stint AS INT)                  AS stint,
-        CAST(Position AS INT)               AS position,
+        CAST(CAST(NULLIF(LapNumber, 'nan') AS DOUBLE) AS INT)               AS lap_number,
+        CAST(CAST(NULLIF(Stint, 'nan') AS DOUBLE) AS INT)              AS stint,
+        CAST(CAST(NULLIF(Position, 'nan') AS DOUBLE) AS INT)              AS position,
 
         -- Speed trap
         CAST(SpeedI1 AS DOUBLE)             AS speed_trap_I1,
@@ -45,16 +45,16 @@ renamed_cast AS (
 
         -- Tyre info
         Compound                            AS tyre_compound,
-        CAST(TyreLife AS INT)               AS tyre_life_laps,
-        CAST(FreshTyre AS BOOLEAN)          AS is_fresh_tyre,
+        CAST(CAST(NULLIF(TyreLife, 'nan') AS DOUBLE) AS INT)             AS tyre_life_laps,
+        TRY_CAST(FreshTyre AS BOOLEAN)          AS is_fresh_tyre,
         
         -- Track info
         TrackStatus                         AS track_status, -- can have multiple statuses, keeping as string
-        CAST(IsPersonalBest AS BOOLEAN)     AS is_personal_best,
-        CAST(Deleted AS BOOLEAN)            AS is_deleted,
+        TRY_CAST(IsPersonalBest AS BOOLEAN)     AS is_personal_best,
+        TRY_CAST(Deleted AS BOOLEAN)            AS is_deleted,
         DeletedReason                       AS deleted_reason,
-        CAST(FastF1Generated AS BOOLEAN)    AS is_fastf1_generated,
-        CAST(IsAccurate AS BOOLEAN)         AS is_accurate,
+        TRY_CAST(FastF1Generated AS BOOLEAN)    AS is_fastf1_generated,
+        TRY_CAST(IsAccurate AS BOOLEAN)         AS is_accurate,
         
         -- Race info
         CAST(year AS INT)                   AS year,
