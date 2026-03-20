@@ -25,7 +25,7 @@ renamed_cast AS (
         CAST(LapStartTime AS DOUBLE)        AS lap_start_time_sec,
 
         -- Timestamp
-        CAST(LapStartDate AS TIMESTAMP)     AS lap_start_date,
+        TRY_CAST(LapStartDate AS TIMESTAMP)     AS lap_start_date,
 
         -- Driver info
         Driver                              AS driver,
