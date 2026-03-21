@@ -3,6 +3,14 @@ version: 2
 models:
     - name: stg_race_results
       description: "Stage table for lap data, cleaned and cast from raw strings to proper dats types"
+      data_tests:
+        - dbt_utils.unique_combination_of_columns:
+            arguments:
+                combination_of_columns:
+                  - year
+                  - round_number
+                  - driver
+                  - lap_number
       columns: 
         - name: year
           description: "Season year"
