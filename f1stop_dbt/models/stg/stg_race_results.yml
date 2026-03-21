@@ -5,6 +5,18 @@ models:
       description: "Stage table for lap data, cleaned and cast from raw strings to proper dats types"
       columns: 
         - name: year
+          description: "Season year"
+          data_tests: 
+            - not_null
         - name: round_number
+          description: "Race/round number within season"
+          data_tests: 
+            - not_null
         - name: driver
+          description: "Three letter driver code"
+          data_tests: 
+            - not_null
         - name: lap_number
+          description: "Lap Number within race"
+          data_tests:
+            - not_null
