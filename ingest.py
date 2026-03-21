@@ -20,7 +20,7 @@ fastf1.Cache.enable_cache('cache/')
 
 # DEFINE PARAMS
 YEAR = 2025
-ROUNDS = range(1, 13)  # (25 for full season in 2025) Full season, script will skip already loaded rounds
+ROUNDS = range(12, 15)  # (25 for full season in 2025) Full season, script will skip already loaded rounds
 
 all_records = []
 
