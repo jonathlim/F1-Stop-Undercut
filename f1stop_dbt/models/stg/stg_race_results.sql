@@ -47,7 +47,7 @@ renamed_cast AS (
         CAST(SpeedST AS DOUBLE)             AS speed_trap_ST,
 
         -- Tyre info
-        Compound                            AS tyre_compound,
+        NULLIF(NULLIF(Compound, 'nan'), 'None')             AS tyre_compound,
         CAST(CAST(NULLIF(TyreLife, 'nan') AS DOUBLE) AS INT)             AS tyre_life_laps,
         TRY_CAST(FreshTyre AS BOOLEAN)          AS is_fresh_tyre,
         

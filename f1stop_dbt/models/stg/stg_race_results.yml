@@ -8,6 +8,9 @@ models:
           description: "Season year"
           data_tests: 
             - not_null
+            - accepted_values:
+                arguments:
+                    values: [2025, 2026]
         - name: round_number
           description: "Race/round number within season"
           data_tests: 
@@ -20,3 +23,14 @@ models:
           description: "Lap Number within race"
           data_tests:
             - not_null
+        - name: lap_time_sec
+          description: "Lap time of driver in secs"
+        - name: tyre_compound
+          description: "Compund of tyre used. NULL where unavailable"
+          data_tests:
+            - accepted_values:
+                arguments:
+                    values: ['SOFT', 'MEDIUM', 'HARD', 'INTERMEDIATE', 'WET']
+                config:
+                    where: "tyre_compound IS NOT NULL"
+        
