@@ -33,4 +33,25 @@ models:
                     values: ['SOFT', 'MEDIUM', 'HARD', 'INTERMEDIATE', 'WET']
                 config:
                     where: "tyre_compound IS NOT NULL"
+        - name: team
+          description: "Team of driver"
+        - name: driver_number
+          description: "Designated driver code number"
+        - name: track_status
+          description: "Status code of the track"
+          data_tests:
+            - not_null
+        - name: deleted_reason
+          description: "Reason for timing deleted. NULL for non-deleted"
+        - name: event_name
+          description: "Name of race"
+          data_tests:
+            - not_null
+        - name: session_type
+          description: "Type of session, either race, qualifying, free practice, should always be R for this data"
+          data_tests:
+            - not_null
+            - accepted_values:
+                arguments:
+                    values: ['R']
         
