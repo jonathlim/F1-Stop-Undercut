@@ -55,7 +55,7 @@ renamed_cast AS (
         TrackStatus                         AS track_status, -- can have multiple statuses, keeping as string
         TRY_CAST(IsPersonalBest AS BOOLEAN)     AS is_personal_best,
         TRY_CAST(Deleted AS BOOLEAN)            AS is_deleted,
-        NULLIF(DeletedReason, '')                       AS deleted_reason,
+        NULLIF(NULLIF(DeletedReason, 'nan'), '')     AS deleted_reason,
         TRY_CAST(FastF1Generated AS BOOLEAN)    AS is_fastf1_generated,
         TRY_CAST(IsAccurate AS BOOLEAN)         AS is_accurate,
         
