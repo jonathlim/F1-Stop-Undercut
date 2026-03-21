@@ -1,7 +1,10 @@
 -- Model: stg_race_results
 
 {{ config( 
-    tags = ['stg']
+    tags = ['stg'],
+    materialized = 'incremental',
+    incremental_strategy = 'append',
+    unique_key = ['year', 'round_number', 'driver', 'lap_number']
 )}}
 
 WITH source AS (
@@ -68,3 +71,10 @@ renamed_cast AS (
 )
 
 SELECT * FROM renamed_cast
+
+{% if is_incremental() %}
+    WHERE (year, round_number, driver, lap_number) NOT IN (
+        SELECT year, round_number, driver, lap_number
+        from {{ this }}
+    )
+{% endif %}
