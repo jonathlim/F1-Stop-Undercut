@@ -1,0 +1,10 @@
+version: 2
+
+models:
+    - name: stg_race_results
+      description: "Stage table for lap data, cleaned and cast from raw strings to proper dats types"
+      columns: 
+        - name: year
+        - name: round_number
+        - name: driver
+        - name: lap_number
