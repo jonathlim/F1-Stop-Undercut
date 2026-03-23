@@ -1,0 +1,5 @@
+version: 2
+
+models: 
+    - name: int_laps_enriched
+      description: "Intermidate table for lap data with enriched columns"
