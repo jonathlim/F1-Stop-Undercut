@@ -15,17 +15,17 @@ renamed_cast AS (
     SELECT
 
         -- Time as seconds
-        CAST(Time AS DOUBLE)                AS session_time_sec,
-        CAST(LapTime AS DOUBLE)             AS lap_time_sec,
-        CAST(PitOutTime AS DOUBLE)          AS pit_out_time_sec,
-        CAST(PitInTime AS DOUBLE)           AS pit_in_time_sec,
-        CAST(Sector1Time AS DOUBLE)         AS sector_1_time_sec,
-        CAST(Sector2Time AS DOUBLE)         AS sector_2_time_sec,
-        CAST(Sector3Time AS DOUBLE)         AS sector_3_time_sec,
-        CAST(Sector1SessionTime AS DOUBLE)  AS sector_1_session_time_sec,
-        CAST(Sector2SessionTime AS DOUBLE)  AS sector_2_session_time_sec,
-        CAST(Sector3SessionTime AS DOUBLE)  AS sector_3_session_time_sec,
-        CAST(LapStartTime AS DOUBLE)        AS lap_start_time_sec,
+        CAST(Time AS DOUBLE)                                                        AS session_time_sec,
+        NULLIF(CAST(LapTime AS DOUBLE), CAST('NaN' AS DOUBLE))                     AS lap_time_sec,
+        NULLIF(CAST(PitOutTime AS DOUBLE), CAST('NaN' AS DOUBLE))                  AS pit_out_time_sec,
+        NULLIF(CAST(PitInTime AS DOUBLE), CAST('NaN' AS DOUBLE))                   AS pit_in_time_sec,
+        NULLIF(CAST(Sector1Time AS DOUBLE), CAST('NaN' AS DOUBLE))                 AS sector_1_time_sec,
+        NULLIF(CAST(Sector2Time AS DOUBLE), CAST('NaN' AS DOUBLE))                 AS sector_2_time_sec,
+        NULLIF(CAST(Sector3Time AS DOUBLE), CAST('NaN' AS DOUBLE))                 AS sector_3_time_sec,
+        NULLIF(CAST(Sector1SessionTime AS DOUBLE), CAST('NaN' AS DOUBLE))          AS sector_1_session_time_sec,
+        NULLIF(CAST(Sector2SessionTime AS DOUBLE), CAST('NaN' AS DOUBLE))          AS sector_2_session_time_sec,
+        NULLIF(CAST(Sector3SessionTime AS DOUBLE), CAST('NaN' AS DOUBLE))          AS sector_3_session_time_sec,
+        NULLIF(CAST(LapStartTime AS DOUBLE), CAST('NaN' AS DOUBLE))                AS lap_start_time_sec,
 
         -- Timestamp
         TRY_CAST(LapStartDate AS TIMESTAMP)     AS lap_start_date,
@@ -41,10 +41,10 @@ renamed_cast AS (
         CAST(CAST(NULLIF(Position, 'nan') AS DOUBLE) AS INT)              AS position,
 
         -- Speed trap
-        CAST(SpeedI1 AS DOUBLE)             AS speed_trap_I1,
-        CAST(SpeedI2 AS DOUBLE)             AS speed_trap_I2,
-        CAST(SpeedFL AS DOUBLE)             AS speed_trap_FL,
-        CAST(SpeedST AS DOUBLE)             AS speed_trap_ST,
+        NULLIF(CAST(SpeedI1 AS DOUBLE), CAST('NaN' AS DOUBLE))                     AS speed_trap_i1,
+        NULLIF(CAST(SpeedI2 AS DOUBLE), CAST('NaN' AS DOUBLE))                     AS speed_trap_i2,
+        NULLIF(CAST(SpeedFL AS DOUBLE), CAST('NaN' AS DOUBLE))                     AS speed_trap_fl,
+        NULLIF(CAST(SpeedST AS DOUBLE), CAST('NaN' AS DOUBLE))                     AS speed_trap_st,
 
         -- Tyre info
         NULLIF(NULLIF(Compound, 'nan'), 'None')             AS tyre_compound,
