@@ -60,7 +60,14 @@ enriched AS (
         is_accurate,
 
         -- Derived flags
-        track_status = '1'                  AS is_green_flag_lap,
+        NOT (
+            track_status LIKE '%2%' OR   -- yellow flag
+            track_status LIKE '%3%' OR   -- SC deployed
+            track_status LIKE '%4%' OR   -- SC on track
+            track_status LIKE '%5%' OR   -- red flag
+            track_status LIKE '%6%' OR   -- VSC
+            track_status LIKE '%7%'      -- VSC ending
+        )                                   AS is_green_flag_lap,
         pit_in_time_sec IS NOT NULL         AS is_pit_lap,
         pit_out_time_sec IS NOT NULL        AS is_outlap,
 
