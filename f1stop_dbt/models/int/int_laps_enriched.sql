@@ -46,8 +46,8 @@ enriched AS (
         stint,
 
         -- Speed traps
-        speed_trap_I1,
-        speed_trap_I2,
+        speed_trap_i1,
+        speed_trap_i2,
         speed_trap_fl,
         speed_trap_st,
 
