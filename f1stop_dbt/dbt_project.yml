@@ -37,3 +37,6 @@ models:
     stg:
       +materialized: table
       +schema: stg
+    int:
+      +materialized: table
+      +schema: int 
