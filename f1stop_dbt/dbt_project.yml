@@ -40,3 +40,6 @@ models:
     int:
       +materialized: table
       +schema: int 
+    mart:
+      +materialized: table
+      +schema: mart
