@@ -1,5 +1,48 @@
 version: 2
 
-models: 
-    - name: int_laps_enriched
-      description: "Intermidate table for lap data with enriched columns"
+models:
+  - name: int_laps_enriched
+    description: "Enriched lap data built on stg_race_results. Adds derived flags and window function columns for downstream mart consumption. One row per driver per lap per race."
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - year
+              - round_number
+              - driver
+              - lap_number
+    columns:
+      - name: year
+        description: "Season year"
+        data_tests:
+          - not_null
+      - name: round_number
+        description: "Race/round number within season"
+        data_tests:
+          - not_null
+      - name: driver
+        description: "Three letter driver code"
+        data_tests:
+          - not_null
+      - name: lap_number
+        description: "Lap number within race"
+        data_tests:
+          - not_null
+      - name: is_green_flag_lap
+        description: "True when no yellow, safety car, VSC or red flag codes present in track_status"
+        data_tests:
+          - not_null
+      - name: is_pit_lap
+        description: "True when driver pitted at end of this lap"
+        data_tests:
+          - not_null
+      - name: is_outlap
+        description: "True when driver exited pits at start of this lap"
+        data_tests:
+          - not_null
+      - name: stint_lap_number
+        description: "Lap number within the current tyre stint, resets to 1 after each pit stop"
+        data_tests:
+          - not_null
+      - name: gap_to_fastest_lap_sec
+        description: "Difference in seconds between this lap time and the fastest lap in the race. NULL when lap_time_sec is NULL"
