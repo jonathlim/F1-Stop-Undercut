@@ -16,16 +16,17 @@ renamed_cast AS (
 
         -- Time as seconds
         CAST(Time AS DOUBLE)                                                        AS session_time_sec,
-        NULLIF(CAST(LapTime AS DOUBLE), CAST('NaN' AS DOUBLE))                     AS lap_time_sec,
-        NULLIF(CAST(PitOutTime AS DOUBLE), CAST('NaN' AS DOUBLE))                  AS pit_out_time_sec,
-        NULLIF(CAST(PitInTime AS DOUBLE), CAST('NaN' AS DOUBLE))                   AS pit_in_time_sec,
-        NULLIF(CAST(Sector1Time AS DOUBLE), CAST('NaN' AS DOUBLE))                 AS sector_1_time_sec,
-        NULLIF(CAST(Sector2Time AS DOUBLE), CAST('NaN' AS DOUBLE))                 AS sector_2_time_sec,
-        NULLIF(CAST(Sector3Time AS DOUBLE), CAST('NaN' AS DOUBLE))                 AS sector_3_time_sec,
-        NULLIF(CAST(Sector1SessionTime AS DOUBLE), CAST('NaN' AS DOUBLE))          AS sector_1_session_time_sec,
-        NULLIF(CAST(Sector2SessionTime AS DOUBLE), CAST('NaN' AS DOUBLE))          AS sector_2_session_time_sec,
-        NULLIF(CAST(Sector3SessionTime AS DOUBLE), CAST('NaN' AS DOUBLE))          AS sector_3_session_time_sec,
-        NULLIF(CAST(LapStartTime AS DOUBLE), CAST('NaN' AS DOUBLE))                AS lap_start_time_sec,
+
+        {{ cast_nan_double('LapTime') }}                    AS lap_time_sec,
+        {{ cast_nan_double('PitOutTime') }}                 AS pit_out_time_sec,
+        {{ cast_nan_double('PitInTime') }}                  AS pit_in_time_sec,
+        {{ cast_nan_double('Sector1Time') }}                AS sector_1_time_sec,
+        {{ cast_nan_double('Sector2Time') }}                AS sector_2_time_sec,
+        {{ cast_nan_double('Sector3Time') }}                AS sector_3_time_sec,
+        {{ cast_nan_double('Sector1SessionTime') }}         AS sector_1_session_time_sec,
+        {{ cast_nan_double('Sector2SessionTime') }}         AS sector_2_session_time_sec,
+        {{ cast_nan_double('Sector3SessionTime') }}         AS sector_3_session_time_sec,
+        {{ cast_nan_double('LapStartTime') }}               AS lap_start_time_sec,
 
         -- Timestamp
         TRY_CAST(LapStartDate AS TIMESTAMP)     AS lap_start_date,
@@ -36,19 +37,19 @@ renamed_cast AS (
         Team                                AS team,
 
         -- Lap info
-        CAST(CAST(NULLIF(LapNumber, 'nan') AS DOUBLE) AS INT)               AS lap_number,
-        CAST(CAST(NULLIF(Stint, 'nan') AS DOUBLE) AS INT)              AS stint,
-        CAST(CAST(NULLIF(Position, 'nan') AS DOUBLE) AS INT)              AS position,
+        {{ cast_nan_int('LapNumber') }}                     AS lap_number,
+        {{ cast_nan_int('Stint') }}                         AS stint,
+        {{ cast_nan_int('Position') }}                      AS position,
 
         -- Speed trap
-        NULLIF(CAST(SpeedI1 AS DOUBLE), CAST('NaN' AS DOUBLE))                     AS speed_trap_i1,
-        NULLIF(CAST(SpeedI2 AS DOUBLE), CAST('NaN' AS DOUBLE))                     AS speed_trap_i2,
-        NULLIF(CAST(SpeedFL AS DOUBLE), CAST('NaN' AS DOUBLE))                     AS speed_trap_fl,
-        NULLIF(CAST(SpeedST AS DOUBLE), CAST('NaN' AS DOUBLE))                     AS speed_trap_st,
+        {{ cast_nan_double('SpeedI1') }}                    AS speed_trap_i1,
+        {{ cast_nan_double('SpeedI2') }}                    AS speed_trap_i2,
+        {{ cast_nan_double('SpeedFL') }}                    AS speed_trap_fl,
+        {{ cast_nan_double('SpeedST') }}                    AS speed_trap_st,
 
         -- Tyre info
         NULLIF(NULLIF(Compound, 'nan'), 'None')             AS tyre_compound,
-        CAST(CAST(NULLIF(TyreLife, 'nan') AS DOUBLE) AS INT)             AS tyre_life_laps,
+        {{ cast_nan_int('TyreLife') }}                      AS tyre_life_laps,
         TRY_CAST(FreshTyre AS BOOLEAN)          AS is_fresh_tyre,
         
         -- Track info
