@@ -1,0 +1,13 @@
+version: 2
+
+models: 
+  - name: mart_tyre_strategy
+    description: "Tyre stint analysis per driver per race"
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments: 
+            combination_of_columns:
+              - year
+              - round_number
+              - driver
+              - stint
