@@ -11,3 +11,51 @@ models:
               - round_number
               - driver
               - stint
+    columns:
+      - name: year
+        description: "Season year"
+        data_tests:
+          - not_null
+      - name: round_number
+        description: "Race/round number within season"
+        data_tests:
+          - not_null
+      - name: driver
+        description: "Three letter driver code"
+        data_tests:
+          - not_null
+      - name: team
+        description: "Constructor team name"
+        data_tests:
+          - not_null
+      - name: stint
+        description: "Stint number within the race, increments after each pit stop"
+        data_tests:
+          - not_null
+      - name: tyre_compound
+        description: "Tyre compound used during this stint"
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['SOFT', 'MEDIUM', 'HARD', 'INTERMEDIATE', 'WET']
+      - name: stint_start_lap
+        description: "First lap number of this stint"
+        data_tests:
+          - not_null
+      - name: stint_end_lap
+        description: "Last lap number of this stint"
+        data_tests:
+          - not_null
+      - name: stint_lap_count
+        description: "Total number of laps in this stint"
+        data_tests:
+          - not_null
+      - name: deg_first_to_last_sec
+        description: "Difference between average of last 3 laps and first 3 laps. Positive = degradation, negative = improvement"
+      - name: avg_green_flag_lap_sec
+        description: "Average lap time on green flag laps only within this stint"
+      - name: event_name
+        description: "Official race event name"
+        data_tests:
+          - not_null   
