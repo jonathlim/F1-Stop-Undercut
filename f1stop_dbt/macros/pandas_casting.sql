@@ -12,7 +12,7 @@
     Use for: Integer numbers that  may arrive as floats from pandas
 #}
 
-{% marco cast_nan_int(col) %}
+{% macro cast_nan_int(col) %}
     CAST(CAST(NULLIF({{ col }}, 'nan') AS DOUBLE) AS INT)
-{% endmarco %}
+{% endmacro %}
 
