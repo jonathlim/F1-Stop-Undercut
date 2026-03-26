@@ -10,3 +10,38 @@ models:
               - year
               - round_number
               - driver
+    columns:
+      - name: year
+        description: "Season year"
+        data_tests:
+          - not_null
+      - name: round_number
+        description: "Race/round number within season"
+        data_tests:
+          - not_null
+      - name: driver
+        description: "Three letter driver code"
+        data_tests:
+          - not_null
+      - name: team
+        description: "Constructor team name"
+        data_tests:
+          - not_null
+      - name: total_green_flag_laps
+        description: "Total number of clean green flag laps used in pace calculations"
+        data_tests:
+          - not_null
+      - name: fastest_lap_sec
+        description: "Fastest green flag lap time in seconds"
+      - name: avg_lap_time_sec
+        description: "Average green flag lap time in seconds"
+      - name: median_lap_time_sec
+        description: "Median green flag lap time in seconds, more robust to outliers than average"
+      - name: lap_time_stddev
+        description: "Standard deviation of green flag lap times, lower value indicates more consistent pace"
+      - name: avg_gap_to_fastest_lap_sec
+        description: "Average gap in seconds to the fastest lap set in that race across all green flag laps"
+      - name: event_name
+        description: "Official race event name"
+        data_tests:
+          - not_null
