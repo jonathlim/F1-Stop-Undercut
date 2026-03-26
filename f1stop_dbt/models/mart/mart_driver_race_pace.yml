@@ -1,0 +1,6 @@
+version: 2
+
+models: 
+  - name: mart_driver_race_pace
+    description: "Mart table for driver pace analysis per race, green flag laps only"
+    
