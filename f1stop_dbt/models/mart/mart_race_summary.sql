@@ -1,5 +1,5 @@
 -- Model: mart_race_summary
--- High level race overview per driver per race
+-- Description: High level race overview per driver per race
 
 {{ config(
     tags = ['mart'],

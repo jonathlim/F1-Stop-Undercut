@@ -1,4 +1,5 @@
 -- Model: stg_race_results
+-- Description: Stage table for lap data, cleaned and cast from raw strings to proper dats types
 
 {{ config( 
     tags = ['stg'],

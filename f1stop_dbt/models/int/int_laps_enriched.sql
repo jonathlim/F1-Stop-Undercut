@@ -1,4 +1,6 @@
 -- Model: int_laps_enriched
+-- Description: Enriched lap data built on stg_race_results. Adds derived flags 
+--      and window function columns for downstream mart consumption. One row per driver per lap per race
 
 {{ config(
     tags = ['int'],
