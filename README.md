@@ -1,6 +1,6 @@
 # F1 Stop Undercut
 
-A personal data engineering portfolio project that ingests Formula 1 lap data, loads it into Databricks, and transforms it using dbt Core.
+Ingests Formula 1 lap data, loads it into Databricks, and transforms it using dbt Core.
 
 ## Project Overview
 
