@@ -30,6 +30,9 @@ f1stop.intermediate.int_laps_enriched (dbt intermediate)
 mart_driver_race_pace  mart_tyre_strategy    mart_race_summary
 ```
 
+## Lineage
+![dbt Lineage](images/lineage.png)
+
 ## Data Pipeline
 
 ### Ingestion (`ingest.py`)
