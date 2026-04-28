@@ -1,10 +1,7 @@
 .env
 venv/
-connectiontest.py
-fetchtest.py
 cache/
 __pycache__/
 *.pyc
-oldingest.py
 logs/
 .DS_Store
