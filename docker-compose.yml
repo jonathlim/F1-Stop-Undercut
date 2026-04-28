@@ -1,0 +1,8 @@
+
+services: 
+  ingest:
+    build: .
+    env_file: .env
+    volumes:
+      - .:/app
+  
